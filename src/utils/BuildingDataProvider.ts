@@ -1,28 +1,27 @@
 import { useState, useEffect } from 'react';
+import floors from '../data/building.json';
 
 interface Floor {
   name: string;
   soldiers: number;
   purpose: string;
   description: string;
-  activity:string
+  activity: string;
 }
 
 const useBuildingData = () => {
-  const [buildingData, setBuildingData] = useState<Floor[]>([]);
+  const [buildingDataState, setBuildingDataState] = useState<Floor[]>(floors);
 
-  //FILL HERE LOGIC TO SET THE BUILDING DATA
+  const getFloorByIndex = (floorIndex: number): Floor => {
+    return buildingDataState[floorIndex];
+  };
 
+  const getListOfActivities = (): string[] => {
+    return buildingDataState.map(floor => floor.activity);
+  };
 
-  const getFloorByIndex = (floorIndex:number): Floor |undefined =>
-  {
-    //FILL HERE
-  }
-  const getListOfActivities = ():string[]=>{
-    //FILL HERE
-  }
   return {
-    buildingData,
+    buildingData: buildingDataState,
     getFloorByIndex,
     getListOfActivities
   };
