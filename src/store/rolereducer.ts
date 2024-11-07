@@ -1,6 +1,7 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
+import roles from  '../data/roles.json'
 
-const initialState = "Unknown Personnel";
+const initialState = roles[0]
 
 const roleSlice = createSlice({
   name: "role",
